@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Free 3-Day Trial to FBBC Centerville!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@500;700;900&display=swap');
+        :root {
+            --accent-yellow: #FFD100;
+            --text-color: #FFFFFF;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            background-image:
+                linear-gradient(to top, rgba(0, 0, 0, 0.9) 20%, rgba(0, 0, 0, 0.65) 50%, rgba(0, 0, 0, 0.9) 100%),
+                url('https://i.imgur.com/RM9RyN4.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 650px;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            color: var(--text-color);
+        }
+        .logo img {
+            max-width: 250px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(36px, 5vw, 56px);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin: 0;
+            color: var(--text-color);
+            line-height: 1.2;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+        .subheadline {
+            font-size: clamp(16px, 2.5vw, 20px);
+            margin: 15px 0 30px 0;
+            color: #dddddd;
+            line-height: 1.6;
+        }
+        .form-container {
+            background-color: rgba(15, 15, 15, 0.8);
+            border: 1px solid #444;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
+        }
+        .form-title {
+            font-family: 'Anton', sans-serif;
+            font-size: 32px;
+            color: var(--accent-yellow);
+            text-transform: uppercase;
+            margin: 0 0 20px 0;
+        }
+
+        /* GHL Form Styling - This will style the form you embed */
+        #ghl-form-placeholder {
+            /* These styles are a visual guide, the GHL form will have its own styling that you can adjust in the Form Builder */
+            border: 2px dashed #555;
+            padding: 40px 20px;
+            color: #888;
+            font-weight: 700;
+        }
+        
+        /* You can style GHL form fields directly once embedded. GHL forms often use classes like .form-field .form-label .btn */
+        .ghl-form-container .btn-se {
+            background-color: var(--accent-yellow) !important;
+            color: #000000 !important;
+            font-weight: 700 !important;
+            border-radius: 5px !important;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://storage.googleapis.com/msgsndr/r0ottkjnB7s0s9wfq7vY/media/68790d4202da4713ce431768.png" alt="Fit Body Boot Camp Logo">
+        </div>
+        <h1>Your Friend Unlocked a<br><span style="color: var(--accent-yellow);">FREE 3-DAY TRIAL</span> For You!</h1>
+        <p class="subheadline">Experience our Unstoppable Fitness Formula for 3 full days on us. Fill out the form below to claim your pass and get started!</p>
+        
+        <div class="form-container">
+            <p class="form-title">Claim Your Pass Now</p>
+            
+            <div id="ghl-form-placeholder">
+                Your GHL Form Will Go Here
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
