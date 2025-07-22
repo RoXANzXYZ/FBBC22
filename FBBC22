@@ -60,6 +60,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.6);
             backdrop-filter: blur(10px);
+            box-sizing: border-box; /* Ensures padding doesn't break layout */
         }
         .form-title {
             font-family: 'Anton', sans-serif;
@@ -69,22 +70,24 @@
             margin: 0 0 20px 0;
         }
 
-        /* GHL Form Styling - This will style the form you embed */
-        #ghl-form-placeholder {
-            /* These styles are a visual guide, the GHL form will have its own styling that you can adjust in the Form Builder */
-            border: 2px dashed #555;
-            padding: 40px 20px;
-            color: #888;
-            font-weight: 700;
+        /* --- GHL FORM OVERRIDE STYLES --- */
+        /* This new section forces the GHL form to fit inside our box */
+        .ghl-form-wrap {
+            width: 100% !important;
         }
-        
-        /* You can style GHL form fields directly once embedded. GHL forms often use classes like .form-field .form-label .btn */
-        .ghl-form-container .btn-se {
-            background-color: var(--accent-yellow) !important;
-            color: #000000 !important;
-            font-weight: 700 !important;
-            border-radius: 5px !important;
+        .form-builder--form {
+             width: 100% !important;
+             box-sizing: border-box !important;
         }
+        .ghl-form-wrap .form-field, .ghl-form-wrap .form-field-container {
+             padding-left: 0 !important;
+             padding-right: 0 !important;
+        }
+        .ghl-form-wrap .form-field .form-control, .ghl-form-wrap .form-field textarea {
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+        /* End of override styles */
 
     </style>
 </head>
@@ -99,8 +102,8 @@
         <div class="form-container">
             <p class="form-title">Claim Your Pass Now</p>
             
-            <div id="ghl-form-placeholder">
-                Your GHL Form Will Go Here
+            <div id="ghl-form-placeholder" style="border: 2px dashed #555; padding: 40px 20px; color: #888; font-weight: 700;">
+                 Your GHL Form Will Go Here
             </div>
 
         </div>
