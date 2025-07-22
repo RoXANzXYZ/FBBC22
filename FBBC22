@@ -13,7 +13,6 @@
         body, html {
             margin: 0;
             padding: 0;
-            height: 100%;
             font-family: 'Montserrat', sans-serif;
             background-image:
                 linear-gradient(to top, rgba(0, 0, 0, 0.9) 20%, rgba(0, 0, 0, 0.65) 50%, rgba(0, 0, 0, 0.9) 100%),
@@ -21,14 +20,19 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+        }
+        .page-wrapper {
             display: flex;
             justify-content: center;
-            align-items: center;
+            /* UPDATED: This is the key fix. Aligns content to the top instead of the center. */
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 40px 20px; /* Adds some breathing room at the top and bottom */
+            box-sizing: border-box;
         }
         .container {
             width: 100%;
             max-width: 650px;
-            padding: 20px;
             box-sizing: border-box;
             text-align: center;
             color: var(--text-color);
@@ -60,7 +64,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.6);
             backdrop-filter: blur(10px);
-            box-sizing: border-box; /* Ensures padding doesn't break layout */
+            box-sizing: border-box;
         }
         .form-title {
             font-family: 'Anton', sans-serif;
@@ -70,42 +74,31 @@
             margin: 0 0 20px 0;
         }
 
-        /* --- GHL FORM OVERRIDE STYLES --- */
-        /* This new section forces the GHL form to fit inside our box */
-        .ghl-form-wrap {
-            width: 100% !important;
-        }
-        .form-builder--form {
-             width: 100% !important;
-             box-sizing: border-box !important;
-        }
-        .ghl-form-wrap .form-field, .ghl-form-wrap .form-field-container {
-             padding-left: 0 !important;
-             padding-right: 0 !important;
-        }
-        .ghl-form-wrap .form-field .form-control, .ghl-form-wrap .form-field textarea {
-            width: 100% !important;
-            box-sizing: border-box !important;
-        }
-        /* End of override styles */
+        /* GHL FORM OVERRIDE STYLES */
+        .ghl-form-wrap { width: 100% !important; }
+        .form-builder--form { width: 100% !important; box-sizing: border-box !important; }
+        .ghl-form-wrap .form-field, .ghl-form-wrap .form-field-container { padding-left: 0 !important; padding-right: 0 !important; }
+        .ghl-form-wrap .form-field .form-control, .ghl-form-wrap .form-field textarea { width: 100% !important; box-sizing: border-box !important; }
 
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">
-            <img src="https://storage.googleapis.com/msgsndr/r0ottkjnB7s0s9wfq7vY/media/68790d4202da4713ce431768.png" alt="Fit Body Boot Camp Logo">
-        </div>
-        <h1>Your Friend Unlocked a<br><span style="color: var(--accent-yellow);">FREE 3-DAY TRIAL</span> For You!</h1>
-        <p class="subheadline">Experience our Unstoppable Fitness Formula for 3 full days on us. Fill out the form below to claim your pass and get started!</p>
-        
-        <div class="form-container">
-            <p class="form-title">Claim Your Pass Now</p>
-            
-            <div id="ghl-form-placeholder" style="border: 2px dashed #555; padding: 40px 20px; color: #888; font-weight: 700;">
-                 Your GHL Form Will Go Here
+    <div class="page-wrapper">
+        <div class="container">
+            <div class="logo">
+                <img src="https://storage.googleapis.com/msgsndr/r0ottkjnB7s0s9wfq7vY/media/68790d4202da4713ce431768.png" alt="Fit Body Boot Camp Logo">
             </div>
+            <h1>Your Friend Unlocked a<br><span style="color: var(--accent-yellow);">FREE 3-DAY TRIAL</span> For You!</h1>
+            <p class="subheadline">Experience our Unstoppable Fitness Formula for 3 full days on us. Fill out the form below to claim your pass and get started!</p>
+            
+            <div class="form-container">
+                <p class="form-title">Claim Your Pass Now</p>
+                
+                <div id="ghl-form-placeholder" style="border: 2px dashed #555; padding: 40px 20px; color: #888; font-weight: 700;">
+                     Your GHL Form Will Go Here
+                </div>
 
+            </div>
         </div>
     </div>
 </body>
