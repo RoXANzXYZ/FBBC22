@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Community Challenge | Centerville Fit Body Bootcamp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --gold: #ffc42c;
+            --gold-darker: #e6b027;
+            --black: #212529;
+            --gray: #495057;
+            --bg-light: #F8F9FA;
+            --white: #FFFFFF;
+            --border-color: #dee2e6;
+            --red: #c0392b;
+            --green: #28a745;
+            --star-yellow: #FFC107;
+            --font-heading: 'Oswald', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            color: var(--gray);
+            background-color: var(--white);
+            line-height: 1.7;
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+            -webkit-font-smoothing: antialiased;
+        }
+        body.loaded { opacity: 1; }
+        
+        /* --- A+ STAMP PRELOADER --- */
+        .preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--bg-light); z-index: 9999;
+            display: flex; justify-content: center; align-items: center;
+            transition: opacity 0.75s ease, visibility 0.75s;
+        }
+        .preloader.fade-out { opacity: 0; visibility: hidden; }
+        .stamp {
+            width: 200px; height: 200px; border: 10px solid var(--red);
+            border-radius: 50%; color: var(--red); display: flex;
+            justify-content: center; align-items: center; font-family: var(--font-heading);
+            font-size: 80px; font-weight: 700;
+            transform: scale(3) rotate(-360deg); opacity: 0;
+            animation: stamp-effect 1.5s 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        @keyframes stamp-effect {
+            0% { transform: scale(3) rotate(-360deg); opacity: 0; }
+            50% { transform: scale(0.9) rotate(15deg); opacity: 1; }
+            70% { transform: scale(1.1) rotate(8deg); }
+            100% { transform: scale(1) rotate(10deg); opacity: 1; }
+        }
+
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 100px 0; text-align: center; }
+        .section-bg { background-color: var(--bg-light); }
+        h1, h2, h3 { font-family: var(--font-heading); font-weight: 700; line-height: 1.2; color: var(--black); text-transform: uppercase; letter-spacing: 1px; }
+        h1 { font-size: clamp(3rem, 6vw, 4.5rem); }
+        h2 { font-size: 3rem; margin-bottom: 1.5rem; }
+        h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; max-width: 700px; margin-left: auto; margin-right: auto; font-size: 1.1rem; }
+        .section-heading { margin-bottom: 4rem; }
+        .text-gold { color: var(--gold); }
+
+        .cta-button {
+            display: inline-block; background-color: var(--gold); color: var(--black); font-weight: 700;
+            padding: 18px 40px; text-decoration: none; border-radius: 6px; font-family: var(--font-heading);
+            font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 1.5rem; 
+            border: none; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15); transition: all 0.3s ease; 
+        }
+        .cta-button:hover { background-color: var(--gold-darker); transform: translateY(-3px); box-shadow: 0 7px 20px rgba(0, 0, 0, 0.15); }
+        
+        .sticky-header { position: sticky; top: 0; z-index: 1000; background-color: var(--black); padding: 15px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header-container { display: flex; justify-content: space-between; align-items: center; }
+        .header-logo-wrapper { background-color: var(--black); display: flex; align-items: center; justify-content: center; }
+        .header-container .logo img { max-height: 65px; }
+        .sticky-header .cta-button { margin-top: 0; font-size: 1rem; padding: 12px 24px; }
+
+        .hero-section { padding: 80px 0; }
+        .hero-section .logo-partnership { display: flex; align-items: center; justify-content: center; gap: 25px; margin-bottom: 40px; }
+        .hero-section .logo-partnership img { max-height: 100px; }
+        .hero-section .logo-partnership .plus-sign { font-size: 3.5rem; font-weight: 300; color: var(--gold); }
+        .hero-section .fbbc-logo-wrapper { background-color: var(--black); border-radius: 50%; padding: 15px; display: flex; align-items: center; justify-content: center; }
+
+        .grid-container-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; text-align: left; }
+        .grid-container-2col .text-content p { margin-left: 0; margin-right: 0; } /* Align p text left in grid */
+        .styled-image { width: 100%; border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+        
+        .card { background-color: var(--white); padding: 50px; border-radius: 16px; box-shadow: 0 10px 35px rgba(0,0,0,0.07); }
+        .three-col-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .feature-card i { font-size: 2.5rem; color: var(--gold); margin-bottom: 1rem; }
+        
+        /* --- OFFER BOX ALIGNMENT FIX --- */
+        .offer-card { max-width: 900px; margin: 0 auto; }
+        .offer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; text-align: left; }
+        .offer-card h2 { font-size: 3.5rem; text-align: left; }
+        .offer-list { list-style: none; padding: 0; margin: 0; }
+        .offer-list li { display: flex; align-items: flex-start; gap: 15px; font-size: 1.1rem; margin-bottom: 1.5rem; }
+        .offer-list li i { color: var(--green); font-size: 1.4rem; margin-top: 4px; }
+        .highlight-donation { background-color: #fff8e1; padding: 2px 6px; border-radius: 4px; }
+        
+        #ghl-form .cta-button {
+            display: block; width: 100%; max-width: 550px;
+            margin-left: auto; margin-right: auto;
+        }
+
+        .schedule-container { max-width: 700px; margin: 0 auto; border: 1px solid var(--border-color); border-radius: 8px; text-align: left; overflow: hidden; background-color: var(--white); }
+        .schedule-day { display: flex; justify-content: space-between; align-items: center; padding: 20px; border-bottom: 1px solid var(--border-color); }
+        .schedule-day:last-child { border-bottom: none; }
+        .schedule-day-name { font-family: 'Oswald', sans-serif; font-size: 1.3rem; font-weight: 500; color: var(--black); }
+        .schedule-day-times { font-size: 1.1rem; color: var(--gray); font-weight: 500; }
+        .sunday { color: var(--gold); font-weight: 700; }
+
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .gallery-item { position: relative; overflow: hidden; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s ease; }
+        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent); color: var(--white); padding: 40px 15px 15px 15px; text-align: center; font-family: var(--font-heading); text-transform: uppercase; font-size: 1.2rem; letter-spacing: 1px; }
+
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; align-items: start; }
+        .review-card { background-color: var(--note-yellow); padding: 30px; text-align: left; box-shadow: 5px 5px 15px rgba(0,0,0,0.15); transition: all 0.3s ease; position: relative; border-radius: 4px; }
+        .review-card.rotate-left { transform: rotate(-2deg); }
+        .review-card.rotate-right { transform: rotate(1.5deg); }
+        .review-card:hover { transform: scale(1.03) rotate(0deg) !important; z-index: 10; }
+        
+        details { background-color: var(--white); border-radius: 8px; margin-bottom: 10px; border: 1px solid var(--border-color); }
+        summary { display: flex; justify-content: space-between; align-items: center; padding: 20px; font-family: var(--font-heading); font-size: 1.3rem; color: var(--black); cursor: pointer; }
+        summary::after { content: '+'; font-size: 2rem; color: var(--gold); transition: transform 0.3s; }
+        details[open] summary::after { transform: rotate(45deg); }
+        details .faq-answer { padding: 0 20px 20px 20px; border-top: 1px solid #eee; text-align: left; }
+
+        .site-footer { background-color: var(--black); color: #ccc; padding: 60px 0; }
+        .site-footer .container { display: flex; flex-direction: column; align-items: center; }
+        .site-footer a { color: var(--gold); text-decoration: none; }
+        .footer-logo-wrapper img { max-height: 70px; }
+        .footer-title { font-family: var(--font-heading); color: var(--white); font-size: 1.1rem; letter-spacing: 1px; margin: 10px 0; font-weight: 500; text-transform: uppercase; }
+        .footer-contact p { color: #adb5bd; font-size: 1rem; margin: 5px 0; }
+        .copyright { margin-top:30px; color: var(--gray); font-size: 0.9rem; }
+        
+        @media (max-width: 968px) { .grid-container-2col { grid-template-columns: 1fr; text-align: center; } .grid-container-2col .text-content { text-align: center; } .grid-container-2col .text-content p { margin-left: auto; margin-right: auto; } .styled-image { order: -1; margin: 0 auto 40px auto; max-width: 500px; } }
+        @media (max-width: 768px) { .offer-grid { grid-template-columns: 1fr; } .offer-card h2 { text-align: center; } }
+    </style>
+</head>
+<body>
+
+    <div class="preloader"><div class="stamp">A+</div></div>
+
+    <header class="sticky-header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <div class="header-logo-wrapper">
+                    <img src="https://storage.googleapis.com/msgsndr/r0ottkjnB7s0s9wfq7vY/media/68790d4202da4713ce431768.png" alt="Logo">
+                </div>
+            </a>
+            <a href="#start-now" class="cta-button">Join Now</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section section-bg">
+            <div class="container">
+                <div class="logo-partnership">
+                    <img src="https://5starassets.blob.core.windows.net/athleticsites/2567605/620/images/7eb9f66b-db7b-4e6c-9607-ffdfbcebfbd1.png" alt="Centerville Elks Logo">
+                    <span class="plus-sign">+</span>
+                    <div class="fbbc-logo-wrapper" style="background-color:var(--black); border-radius:50%; padding:15px;"><img src="https://storage.googleapis.com/msgsndr/r0ottkjnB7s0s9wfq7vY/media/68790d4202da4713ce431768.png" alt="Centerville Fit Body Bootcamp Logo" style="max-height: 70px;"></div>
+                </div>
+                <h1>STRONGER PARENTS.<br><span class="text-gold">STRONGER SCHOOLS.</span></h1>
+                <p style="font-size: 1.3rem; max-width: 750px;">Join the 28-Day Community Challenge that transforms your health while making a difference for Centerville students.</p>
+                <a href="#start-now" class="cta-button">Join The Challenge</a>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="card">
+                    <div class="grid-container-2col">
+                        <div class="text-content">
+                            <h2>FROM OUR FAMILY TO YOURS</h2>
+                            <p>Hey neighbors! We're <strong>Coach Craig and Coach Natalie</strong>. As Centerville business owners and parents to our son, Liam, we are deeply committed to our community. For this challenge, <strong>we are proudly donating our entire 28-day program</strong>—our facility, our coaching, and our passion—as our gift to you when you contribute to this fundraiser. Let's get stronger, together!</p>
+                            <p style="font-family: 'Kalam', cursive; font-size: 2.5rem; color: var(--black); margin-bottom:0;">Craig & Natalie</p>
+                        </div>
+                        <div style="text-align:center;">
+                            <img src="https://scontent.fosu2-1.fna.fbcdn.net/v/t39.30808-6/455312928_10161965125614400_4820153505040457691_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=YfAOv2NKT5EQ7kNvwGvSgp8&_nc_oc=AdkTFo80odskiJMVRYVrTB4oLmYHybZ90o8p0sTc1l7fdPMn1yhEtlYZwYMsZYyGPTnQUJlLJJlX_Huuod17TJjv&nc_zt=23&_nc_ht=scontent.fosu2-1.fna&_nc_gid=c6qx4-0LfQKYtpa0E-wTfQ&oh=00_AfRPFF2dUyBKpqFfoBcITn6qca3ZAY-k-exNaZyAUgsEew&oe=689029C0" alt="Coach Craig, Natalie, and Liam" class="styled-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-bg">
+            <div class="container">
+                <div class="section-heading">
+                     <h2>WHY WE'RE PARTNERING WITH <span class="text-gold">CENTERVILLE SCHOOLS</span></h2>
+                </div>
+                <div class="grid-container-2col">
+                    <div class="text-content">
+                        <p>As local business owners and your neighbors here in Centerville, we know that strong schools are the heart of a strong community. They're where our kids build their futures, discover their passions, and learn the values that will guide them for life.</p>
+                        <p>We believe that investing in our schools is one of the most powerful ways to invest in our town's future. This fundraiser will help provide critical funding for essential programs, updated technology, and extracurricular activities that give every student the chance to thrive.</p>
+                        <p>By joining this challenge, you're not just investing in your own health—you're creating a ripple effect of positivity. You're showing our kids that this community cares, and you're helping us build a stronger, healthier Centerville for everyone. Let's do this together!</p>
+                    </div>
+                    <div>
+                        <img src="https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Students and teacher in a classroom" class="styled-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section>
+            <div class="container">
+                <div class="section-heading">
+                    <h2>THE PROVEN 30-MINUTE RESULTS FORMULA</h2>
+                </div>
+                <div class="three-col-grid">
+                    <div class="feature-card card"><i class="fa-solid fa-clipboard-user"></i><h3>GUIDED WORKOUTS</h3><p>Never feel lost. Our expert coaches guide you through fun, 30-minute sessions modified for your body, ensuring you get stronger safely.</p></div>
+                    <div class="feature-card card"><i class="fa-solid fa-fire"></i><h3>"AFTERBURN" EFFECT</h3><p>Our workouts boost your metabolism for up to 36 hours after you leave. You'll burn more calories all day long, even while you rest.</p></div>
+                    <div class="feature-card card"><i class="fa-solid fa-heart"></i><h3>UNSTOPPABLE COMMUNITY</h3><p>Your secret weapon. Personal support from your coach and a private group of local parents on the same journey to keep you consistent.</p></div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section-bg">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Our Session <span class="text-gold">Schedule</span></h2>
+                    <p>Find a time that fits your busy life. Each fun, effective session is only 30 minutes!</p>
+                </div>
+                <div class="schedule-container">
+                    <div class="schedule-day"><span class="schedule-day-name">Monday - Thursday</span><span class="schedule-day-times">5:15 AM / 6:15 AM / 7:15 AM / 8:15 AM / 5:00 PM / 6:00 PM</span></div>
+                    <div class="schedule-day"><span class="schedule-day-name">Friday</span><span class="schedule-day-times">5:15 AM / 6:15 AM / 7:15 AM / 8:15 AM</span></div>
+                    <div class="schedule-day"><span class="schedule-day-name">Saturday</span><span class="schedule-day-times">8:00 AM / 9:00 AM</span></div>
+                    <div class="schedule-day"><span class="schedule-day-name">Sunday</span><span class="schedule-day-times sunday">Closed</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="section-heading">
+                    <h2>CELEBRATING OUR CENTERVILLE <span class="text-gold">FIT BODY FAMILY</span></h2>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://storage.googleapis.com/msgsndr/r0ottkjnB7s0s9wfq7vY/media/687a4e570657f096b1e88d56.jpeg" alt="Centerville Fit Body member celebrating">
+                        <div class="gallery-caption">Tammy's 25th Session!</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://storage.googleapis.com/msgsndr/r0ottkjnB7s0s9wfq7vY/media/687a4e5888de2540422b3a85.jpeg" alt="Fit Body Boot Camp members together">
+                        <div class="gallery-caption">Megan Crushes It!</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://storage.googleapis.com/msgsndr/r0ottkjnB7s0s9wfq7vY/media/687a4e5788de25fb0f2b3a84.jpeg" alt="Members working out">
+                        <div class="gallery-caption">Afterburn In Action!</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-bg" id="start-now">
+            <div class="container">
+                <div class="offer-card card">
+                    <div class="offer-grid">
+                        <div class="offer-details">
+                            <h2>JOIN THE <span class="text-gold">CHALLENGE</span></h2>
+                            <p style="text-align:left;">Your 28-day transformation is our gift to you when you make a total contribution of $100 to our schools, paid in flexible installments.</p>
+                        </div>
+                        <div class="offer-bullets">
+                             <ul class="offer-list">
+                                 <li><i class="fa-solid fa-circle-check"></i><div><strong>$20 Donation Today:</strong> Your initial contribution secures your spot.</div></li>
+                                 <li><i class="fa-solid fa-circle-check"></i><div><strong>4 Weekly Contributions of $20:</strong> <span class="highlight-donation">100% of your total $100 contribution goes to the school!</span></div></li>
+                                 <li><i class="fa-solid fa-circle-check"></i><div><strong>Your Gift from Us:</strong> 28 days of unlimited workouts and expert coaching.</div></li>
+                             </ul>
+                        </div>
+                    </div>
+                    <div id="ghl-form" style="text-align:center; margin-top: 2rem;">
+                        <a href="#ghl-form" class="cta-button" style="padding: 20px 50px; font-size: 1.3rem;">MAKE MY $20 DONATION & START</a>
+                        <p style="font-size: 0.9rem; margin-top: 1rem;"><em>Your secure GHL form will appear here.</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <div class="container">
+                 <div class="section-heading">
+                    <h2>WHAT OUR MEMBERS SAY ON <span class="text-gold">GOOGLE</span></h2>
+                </div>
+                <div class="reviews-grid">
+                    <div class="review-card rotate-left"><div class="stars">⭐️⭐️⭐️⭐️⭐️</div><p class="review-text">"From the moment you walk in, you feel welcomed, supported, and ready to crush your goals. Natalie and Craig, the owners, are absolutely fantastic..."</p><p class="author">- Jennifer K.</p></div>
+                    <div class="review-card"><div class="stars">⭐️⭐️⭐️⭐️⭐️</div><p class="review-text">"Amazing coaching staff. So energetic and designed to what your goals are. They are always upbeat and supportive. Every workout is different. I cannot recommend them enough."</p><p class="author">- Cyndie S.</p></div>
+                    <div class="review-card rotate-right"><div class="stars">⭐️⭐️⭐️⭐️⭐️</div><p class="review-text">"Fitbody workouts are quick 30 min sessions! Owners Craig and Natalie and the other coaching staff are friendly and make an effort to know everyone’s name and workout abilities."</p><p class="author">- Lucy K.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-bg">
+            <div class="container" style="max-width: 800px;">
+                <div class="section-heading">
+                    <h2>YOUR QUESTIONS, ANSWERED</h2>
+                </div>
+                <div class="faq-list">
+                    <details><summary>Is all the money really donated?</summary><div class="faq-answer"><p>Yes, 100%! The entire $100 contribution—your initial $20 registration plus the four $20 weekly payments—goes directly to Centerville Schools. We are proudly donating our coaching and facility for this event.</p></div></details>
+                    <details><summary>Why is the donation structured in payments?</summary><div class="faq-answer"><p>To make it as accessible as possible for every family. You can support our schools with manageable weekly contributions while you enjoy your 28-day fitness transformation.</p></div></details>
+                    <details><summary>I'm a beginner. Is this right for me?</summary><div class="faq-answer"><p>Absolutely. We specialize in helping beginners feel comfortable and confident. Our certified coaches are experts at modifying every single exercise to meet you at your current fitness level.</p></div></details>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="section-heading">
+                    <h2>FIND OUR <span class="text-gold">CENTERVILLE</span> LOCATION</h2>
+                </div>
+                <div class="grid-container-2col">
+                    <div class="text-content">
+                        <h3>Centerville Fit Body Bootcamp</h3>
+                        <p>We're conveniently located on Miamisburg Centerville Road, making it easy to fit a 30-minute session into your busy day.</p>
+                        <p><strong><i class="fa-solid fa-map-pin"></i> Address:</strong><br>773 Miamisburg Centerville Rd<br>Centerville, OH 45459</p>
+                        <a href="https://www.google.com/maps/place/773+Miamisburg+Centerville+Rd,+Washington+Township,+OH+45459" target="_blank" class="cta-button">Get Directions</a>
+                    </div>
+                    <div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3069.967442299863!2d-84.1826105234204!3d39.69123467156557!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88408f6b1e6b3b5b%3A0x8f3c77f24cf8f844!2s773%20Miamisburg%20Centerville%20Rd%2C%20Washington%20Township%2C%20OH%2045459!5e0!3m2!1sen!2sus!4v1722429214737!5m2!1sen!2sus" width="100%" height="400" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-logo-wrapper"><img src="https://storage.googleapis.com/msgsndr/r0ottkjnB7s0s9wfq7vY/media/68790d4202da4713ce431768.png" alt="Logo"></div>
+            <p class="footer-title">Centerville Fit Body Bootcamp</p>
+            <div class="footer-contact">
+                <p><i class="fa-solid fa-location-dot"></i> <a href="https://www.google.com/maps/place/773+Miamisburg+Centerville+Rd,+Washington+Township,+OH+45459" target="_blank">773 Miamisburg Centerville Rd, Centerville, OH 45459</a></p>
+                <p><i class="fa-solid fa-envelope"></i> <a href="mailto:natalie@centervillefitbody.com">natalie@centervillefitbody.com</a></p>
+            </div>
+            <p class="copyright">© 2025 Centerville Fit Body Bootcamp. All Rights Reserved.</p>
+        </div>
+    </footer>
+<script>
+    window.addEventListener('load', function() {
+        document.body.classList.add('loaded');
+        const preloader = document.querySelector('.preloader');
+        if (preloader) {
+            setTimeout(() => { preloader.classList.add('fade-out'); }, 1800);
+            setTimeout(() => { preloader.style.display = 'none'; }, 2550);
+        }
+    });
+    document.querySelectorAll('details').forEach(item => {
+        item.addEventListener('toggle', () => {
+            if (item.open) {
+                document.querySelectorAll('details').forEach(other => {
+                    if (other !== item) other.open = false;
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>
