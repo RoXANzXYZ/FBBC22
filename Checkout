@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Your Donation | Centerville Fit Body Bootcamp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --gold: #ffc42c;
+            --black: #212529;
+            --gray: #495057;
+            --bg-light: #F8F9FA;
+            --white: #FFFFFF;
+            --border-color: #dee2e6;
+            --green: #28a745;
+            --font-heading: 'Oswald', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: var(--font-body);
+            color: var(--gray);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .page-header { text-align: center; padding: 20px 0; }
+        .page-header img { max-height: 80px; }
+        .checkout-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.25fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        .order-summary, .payment-form {
+            background-color: var(--white);
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+        h1, h2, h3 { font-family: var(--font-heading); color: var(--black); text-transform: uppercase; }
+        h1 { font-size: 2.5rem; text-align: center; margin-bottom: 2rem; }
+        h2 { font-size: 1.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;}
+        .summary-item { display: flex; justify-content: space-between; margin-bottom: 1rem; font-size: 1.1rem; }
+        .summary-item .label { font-weight: 700; }
+        .summary-item .price { font-weight: 500; }
+        .total { font-size: 1.4rem; font-weight: 700; border-top: 2px solid var(--black); padding-top: 1rem; margin-top: 1rem; }
+        .gift-item { background-color: #e8f5e9; padding: 15px; border-radius: 6px; margin-top: 1.5rem; text-align: center; }
+        .gift-item strong { color: var(--green); }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.9rem; }
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: var(--font-body);
+        }
+        .card-details { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .cta-button {
+            display: block; width: 100%; background-color: var(--gold); color: var(--black); font-weight: 700;
+            padding: 18px; text-decoration: none; border-radius: 6px; font-family: var(--font-heading);
+            font-size: 1.3rem; text-transform: uppercase; margin-top: 1.5rem; 
+            border: none; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; text-align: center;
+        }
+        .cta-button:hover { background-color: #e6b027; transform: translateY(-3px); }
+        .secure-payment-info { text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--gray); }
+        .secure-payment-info i { color: var(--green); margin-right: 5px; }
+        .site-footer { text-align: center; padding: 40px 20px; font-size: 0.9rem; color: var(--gray); }
+        @media (max-width: 768px) {
+            .checkout-wrapper { grid-template-columns: 1fr; }
+            .order-summary { order: -1; }
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <img src="https://storage.googleapis.com/msgsndr/r0ottkjnB7s0s9wfq7vY/media/68790d4202da4713ce431768.png" alt="Centerville Fit Body Bootcamp Logo">
+    </header>
+    <main class="container">
+        <h1>Complete Your Donation</h1>
+        <div class="checkout-wrapper">
+            <div class="order-summary">
+                <h2>Order Summary</h2>
+                <div class="summary-item">
+                    <span class="label">Community Challenge Donation</span>
+                    <span class="price">$20.00 Today</span>
+                </div>
+                <p style="font-size: 0.9rem; margin-bottom: 1rem;">Followed by 4 weekly contributions of $20. Total donation: $100.</p>
+                <div class="summary-item total">
+                    <span class="label">Amount Due Today</span>
+                    <span class="price">$20.00</span>
+                </div>
+                <div class="gift-item">
+                    <strong>YOUR GIFT FROM US:</strong><br>
+                    28 Days of Unlimited Workouts at Centerville Fit Body Bootcamp! (Value: $197)
+                </div>
+            </div>
+            <div class="payment-form">
+                <h2>Secure Payment</h2>
+                <form action="thank-you.html" method="POST"> <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-number">Card Details</label>
+                        <input type="text" id="card-number" placeholder="Card Number" required>
+                        <div class="card-details">
+                            <input type="text" id="expiry" placeholder="MM / YY" required>
+                            <input type="text" id="cvc" placeholder="CVC" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="cta-button">
+                        <i class="fa-solid fa-lock"></i> Complete My $20 Donation
+                    </button>
+                    <div class="secure-payment-info">
+                        <p><i class="fa-solid fa-shield-halved"></i> SSL Secure Payment</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <p>© 2025 Centerville Fit Body Bootcamp. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
