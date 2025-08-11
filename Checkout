@@ -114,7 +114,7 @@
                     <div class="step-icon"><i class="fa-solid fa-2"></i></div>
                     <div class="step-content">
                         <strong>Book Your First Workout & Orientation</strong><br>
-                        Your journey starts with a brief orientation right before your first workout. Please use the button below to book your first 30-minute workout session, and **be sure to arrive 20 minutes early** for your one-on-one orientation with a coach.
+                        Your journey starts with a brief orientation right before your first workout. Please use the button below to book your first 30-minute workout session, and <strong>be sure to arrive 20 minutes early</strong> for your one-on-one orientation with a coach.
                         <br>
                         <a href="YOUR_CALENDLY_LINK_HERE" target="_blank" class="cta-button">Book My First Workout</a>
                         </div>
